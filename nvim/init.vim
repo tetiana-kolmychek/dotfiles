@@ -55,6 +55,9 @@ if dein#load_state('~/.cache/dein')
   " trailing whitespace
   call dein#add('ntpeters/vim-better-whitespace')
 
+  " nerdtree
+  call dein#add('scrooloose/nerdtree')
+
   " Required:
   call dein#end()
   call dein#save_state()
@@ -117,5 +120,37 @@ set softtabstop=2   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
 set copyindent
 
-highlight ColorColumn ctermbg=black
+" Autostart NerdTree
+autocmd vimenter * NERDTree
+
+" Allow using mouse for navigation and selection
+set mouse=a
+
+" Add hotkey to drop search highlight
+nnoremap <leader><space> :nohlsearch<cr>
+
+" Integrate with system clipboard
+set clipboard=unnamedplus
+
+" buffers stuff, heavily inspired by
+" https://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>q :bp <BAR> bd #<CR>
+
+" end of buffers stuff
+
+" Show 80 chars indicator
+highlight ColorColumn ctermbg=darkgray
 set colorcolumn=80
