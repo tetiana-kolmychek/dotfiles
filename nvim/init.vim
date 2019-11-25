@@ -58,6 +58,18 @@ if dein#load_state('~/.cache/dein')
   " nerdtree
   call dein#add('scrooloose/nerdtree')
 
+  " buffergator
+  call dein#add('jeetsukumaran/vim-buffergator')
+
+  " graphql
+  call dein#add('jparise/vim-graphql')
+
+  " vue syntax highlight
+  call dein#add('posva/vim-vue')
+
+   " pug (formerly jade) syntax highlight
+  call dein#add('digitaltoad/vim-pug')
+
   " Required:
   call dein#end()
   call dein#save_state()
@@ -101,6 +113,18 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:airline_section_b = ""
 let g:airline_section_y = ""
 
+" make buffergator open tab window to the right
+let g:buffergator_viewport_split_policy = 'B'
+
+" set buffergator split size
+let g:buffergator_vsplit_size = 50
+
+" close vim if the tree is last tab
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" set tree width
+let NERDTreeWinSize=50
+
 " map CtrlP clear cache
 map <c-I> :CtrlPClearCache <CR>
 
@@ -136,7 +160,7 @@ set clipboard=unnamedplus
 " https://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
 
 " Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
