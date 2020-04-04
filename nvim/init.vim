@@ -4,15 +4,15 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.local/share/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
+if dein#load_state('~/.local/share/dein')
+  call dein#begin('~/.local/share/dein')
 
   " Let dein manage dein
   " Required:
-  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
   "call dein#add('Shougo/neosnippet.vim')
@@ -22,7 +22,7 @@ if dein#load_state('~/.cache/dein')
   "call dein#add('Shougo/deol.nvim', { 'rev': 'a1b5108fd' })
 
   " syntax checking
-  call dein#add('scrooloose/syntastic')
+  "call dein#add('scrooloose/syntastic')
 
   " cool statusbar
   call dein#add('Bling/vim-airline')
@@ -33,6 +33,9 @@ if dein#load_state('~/.cache/dein')
 
   " file navigation
   call dein#add('ctrlpvim/ctrlp.vim')
+
+  " completion & language server stuff
+  call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
 
   " themes
   call dein#add('chriskempson/vim-tomorrow-theme')
@@ -89,6 +92,9 @@ endif
 " for statusbar to appear
 " " https://github.com/bling/vim-airline/wiki/FAQ#vim-airline-doesnt-appear-until-i-create-a-new-split
 set laststatus=2
+
+" set the prompt height to two lines
+set cmdheight=2
 
 set wildignore+=*/vendor/*
 
@@ -174,6 +180,29 @@ set hidden
 nmap <leader>q :bp <BAR> bd #<CR>
 
 " end of buffers stuff
+
+" === linter highlights
+
+" default float
+highlight CocFloating ctermfg=White ctermbg=None
+
+" error
+highlight CocErrorSign ctermfg=Red ctermbg=None
+highlight CocErrorVirtualText ctermfg=Red ctermbg=None
+
+" warning
+highlight CocWarningSign ctermfg=Yellow ctermbg=None
+highlight CocWarningVirtualText ctermfg=Red ctermbg=None
+
+" info
+highlight CocInfoSign ctermfg=Blue ctermbg=None
+highlight CocInfoVirtualText ctermfg=Red ctermbg=None
+
+" hint
+highlight CocHintSign ctermfg=Blue ctermbg=None
+highlight CocHihtVirtualText ctermfg=Red ctermbg=None
+
+" === misc
 
 " Show 80 chars indicator
 highlight ColorColumn ctermbg=darkgray
