@@ -32,7 +32,9 @@ if dein#load_state('~/.local/share/dein')
   call dein#add('tpope/vim-fugitive')
 
   " file navigation
-  call dein#add('ctrlpvim/ctrlp.vim')
+  " call dein#add('ctrlpvim/ctrlp.vim')
+  call dein#add('junegunn/fzf', {'build': './install --bin'})
+  call dein#add('junegunn/fzf.vim')
 
   " completion & language server stuff
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
@@ -59,7 +61,7 @@ if dein#load_state('~/.local/share/dein')
   call dein#add('ntpeters/vim-better-whitespace')
 
   " nerdtree
-  call dein#add('scrooloose/nerdtree')
+  call dein#add('preservim/nerdtree')
 
   " buffergator
   call dein#add('jeetsukumaran/vim-buffergator')
@@ -110,11 +112,23 @@ set number
 " syntax highlighting
 syntax on
 
+" --- fzf config
+
+" Map fzf open file to Ctrl-p
+nnoremap <silent> <C-p> :call fzf#vim#files(".", 0)<CR>
+
+" Map fzf open buffers to Ctrl-l
+nnoremap <silent> <C-l> :call fzf#vim#buffers(0)<CR>
+
+" Make sure fzf uses ag and respects gitignore
+" requires the_silver_searcher on arch
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
 " set CtrlP mode to Mixed by-default
 "let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_user_command = 'find %s -type f -maxdepth 8'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_user_command = 'find %s -type f -maxdepth 8'
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 let g:airline_section_b = ""
 let g:airline_section_y = ""
@@ -151,7 +165,7 @@ set expandtab       " Expand TABs to spaces
 set copyindent
 
 " Autostart NerdTree
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 
 " Allow using mouse for navigation and selection
 set mouse=a
