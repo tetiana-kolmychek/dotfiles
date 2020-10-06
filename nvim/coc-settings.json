@@ -1,4 +1,6 @@
 {
   "elixirLS.dialyzerEnabled": false,
-  "coc.preferences.formatOnSaveFiletypes": ["elixir"]
+  "coc.preferences.formatOnSaveFiletypes": ["elixir"],
+  "solargraph.useBundler": true,
+  "solargraph.diagnostics": true
 }

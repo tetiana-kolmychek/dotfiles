@@ -193,6 +193,12 @@ set hidden
 " This replicates the idea of closing a tab
 nmap <leader>q :bp <BAR> bd #<CR>
 
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 " end of buffers stuff
 
 " === linter highlights
